@@ -5,7 +5,16 @@ import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 
+const cardsURL = 'https://jsonplaceholder.typicode.com/photos';
+
 class MyApp extends App {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cardsData: null
+    }
+  }
+
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -14,9 +23,15 @@ class MyApp extends App {
     }
   }
 
+  renderCards() {
+    fetch(cardsURL)
+    .then(response => response.json())
+    .then(json => this.setState({ cardsData: json }))
+  }
+
   render() {
     const { Component, pageProps } = this.props;
-
+    
     return (
       <Container>
         <Head>
