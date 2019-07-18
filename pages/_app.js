@@ -36,7 +36,7 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-    console.log(this.state)
+
     return (
       <Container>
         <Head>
