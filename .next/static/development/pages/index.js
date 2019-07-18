@@ -15666,8 +15666,9 @@ var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_12__["m
   };
 });
 var cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-function Album() {
+function Album(props) {
   var classes = useStyles();
+  console.log(props.cardsData, 'bat');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
@@ -15802,10 +15803,10 @@ function Album() {
       lineNumber: 103
     },
     __self: this
-  }, cards.map(function (card) {
+  }, props.cardsData.map(function (card) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__["default"], {
       item: true,
-      key: card,
+      key: card.id,
       xs: 12,
       sm: 6,
       md: 4,
@@ -15823,8 +15824,8 @@ function Album() {
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_7__["default"], {
       className: classes.cardMedia,
-      image: "https://source.unsplash.com/random",
-      title: "Image title",
+      image: card.thumbnailUrl,
+      title: card.title,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 107
@@ -15846,16 +15847,10 @@ function Album() {
         lineNumber: 113
       },
       __self: this
-    }, "Heading"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    }, card.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_5__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 116
-      },
-      __self: this
-    }, "This is a media card. You can use this section to describe the content.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 120
+        lineNumber: 117
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -15863,7 +15858,7 @@ function Album() {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 121
+        lineNumber: 118
       },
       __self: this
     }, "View"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -15871,7 +15866,7 @@ function Album() {
       color: "primary",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 124
+        lineNumber: 121
       },
       __self: this
     }, "Edit"))));
@@ -15879,7 +15874,7 @@ function Album() {
     className: classes.footer,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 132
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -15888,7 +15883,7 @@ function Album() {
     gutterBottom: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 133
     },
     __self: this
   }, "Footer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -15898,13 +15893,13 @@ function Album() {
     component: "p",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 139
+      lineNumber: 136
     },
     __self: this
   }, "Something here to give the footer a purpose!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MadeWithLove, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142
+      lineNumber: 139
     },
     __self: this
   })));

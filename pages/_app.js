@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
+import "isomorphic-fetch";
 
 const cardsURL = 'https://jsonplaceholder.typicode.com/photos';
 
@@ -11,7 +12,7 @@ class MyApp extends App {
   constructor(props) {
     super(props)
     this.state = {
-      cardsData: null
+      cardsData: []
     }
   }
 
@@ -23,24 +24,28 @@ class MyApp extends App {
     }
   }
 
+  componentWillMount() {
+    this.renderCards();
+  }
+
   renderCards() {
     fetch(cardsURL)
     .then(response => response.json())
-    .then(json => this.setState({ cardsData: json }))
+    .then(json => this.setState({ cardsData: json.slice(0, 100) }))
   }
 
   render() {
     const { Component, pageProps } = this.props;
-    
+    console.log(this.state)
     return (
       <Container>
         <Head>
-          <title>My page</title>
+          <title>CD Inventory</title>
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <Component {...pageProps} />
+          <Component {...pageProps} cardsData={this.state.cardsData} />
         </ThemeProvider>
       </Container>
     );
